@@ -15,8 +15,6 @@ shoppingList.push("Yogurt");
 shoppingList.push("Kool-aid");
 
 
-
-
 function addItem(item) {
     shoppingList.push(item);
 }
@@ -65,6 +63,12 @@ if (!exists) {
 }    
 }
 
+function filterItems(searchTerm) {
+    const result = shoppingList.filter((item) => item.includes(searchTerm))
+    console.log(result);   
+}
+filterItems("Oatmeal")
+
 
 //Task 3: Render the List in the Browser
 // Create an HTML page with an input field, an “Add Item” button, and an unordered list to display the items.
@@ -72,8 +76,8 @@ if (!exists) {
 // Write another function that removes the last item and updates the displayed list when a “Remove Last Item” button is clicked.
 
 const input = document.getElementById("itemInput");
-const addButton = document.getElementById("add-btn");
-const itemsUl = document.getElementById("shopping-list");
+const addButton = document.getElementById("add-button");
+const itemsUl = document.getElementById("shoppingList");
 const removeBtn = document.getElementById("remove-btn");
 
 console.log(input);
@@ -95,23 +99,18 @@ function addAndDisplayItems () {
     //append the new element to the ul
     itemsUl.appendChild(li);
 
-    console.log(shoppingList);
-    
-
+    input.value = " ";   
 }
 
 function removeLastItemAndUpdate() {
-    console.log('clicked');
+    // console.log('clicked');
     //remove the last item in the array
     shoppingList.pop();
         console.log(shoppingList)
 
-        itemsUl.lastElementChild.remove();
-        
-    
+        itemsUl.lastElementChild.remove();    
 }
-
- 
 
 addButton.addEventListener('click', addAndDisplayItems);
 removeBtn.addEventListener('click', removeLastItemAndUpdate);
+
